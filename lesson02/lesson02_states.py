@@ -6,7 +6,10 @@ states = ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Conne
 # source: http://weburge.com/build/states.php
 state_abbr = ['AL','AK','AZ','AR','CA','CO','CT','DC','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']
 
+# Print results to generate html code
 print "<select>"
+
+# zip together list of states and state abbreviations so the correct combination prints for each loop
 for state_abbr,state in zip(state_abbr,states):
 	print """<option value="{0}">{1}</option>""".format(state_abbr,state)
 print "</select>"
