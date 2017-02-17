@@ -16,17 +16,24 @@
 # </tr>
 # </table>
 
-with open("state_info.csv", "r") as state_info_csv:
-	state_info = state_info_csv.read()
+with open("state_info.csv", "r") as state_info:
+	state_info = state_info.read().split("\n")
 
-with open("state_info.csv", "r") as state_info_csv:
-	state_info = state_info_csv.read().split(",")
+for index, row in enumerate(state_info):
+	state_info[index] = row.split(",")
 
-for index,state in enumerate(state_info):
-	state_info[index] = state.split("\n")
-
-print state_info
-
-
-
-
+for state in state_info:
+	with open("lesson03_stateinfo.html", "a") as stateinfo_html:
+		stateinfo_html.write(""""<table border="1">
+				<tr>
+				<td colspan="2"> {0} </td>
+				</tr>
+				<tr>
+				<td> Population Rank: {1} </td>
+				<td> Percent: {2} </td>
+				</tr>
+				<tr>
+				<td> US House Members: {3} </td>
+				<td> Population: {4} </td>
+				</tr>
+				</table>""".format(state[1],state[0],state[4],state[3],state[2]))

@@ -1,14 +1,22 @@
+# Create empty lists for each quadrant, and one for no quadrant
 nw_addresses = []
 ne_addresses = []
 se_addresses = []
 sw_addresses = []
 no_quadrant = []
 
+# Create loop to ask to enter an address 3 times
 for entry in range(3):
+	# Raw input allows user to enter a response, stores it in the variable "address"
 	address = raw_input("Enter an address: ")
 	
+	# Redefines address as a list of strings (split on spaces)
+	# Converts all strings to uppercase
 	address = address.upper().split(" ")
 
+	# Conditional: looks for quadrant in "address" and appends to quadrant to the appropriate list
+	# .join() undoes the .split() we originally used on order to parse out the quadrant, 
+	# and allows the address to be added as one string to the quadrant address lists
 	if "NW" in address:
 		nw_addresses.append(" ".join(address))
 	elif "NE" in address:
@@ -20,6 +28,8 @@ for entry in range(3):
 	else:
 		no_quadrant.append(" ".join(address))
 
+
+# Printing our results!
 if len(nw_addresses) == 1:
 	print "1 NW address was entered. Here is the NW address: {0}".format(nw_addresses)
 elif len(nw_addresses) > 1:
