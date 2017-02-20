@@ -28,32 +28,20 @@
 
 # Challenge 4 (Not a Python challenge, but an HTML/Javascript challenge): When you make a choice from the drop-down menu, jump to that state's table.
 
+with open('states.txt','r') as states_file:
+    states = states_file.read().split('\n')
 
-with open("states.txt", "r") as states_file:
-	states = states_file.read().split("\n")
+states_html= ''
+states_html += '<select>' 
 
-for index, state in enumerate(states):
-	states[index] = state.split("\t")
+for index,state in enumerate(states):
+    states[index] = states[index].split('\t')
+    states_html += '<option value="{0}">{1}</option>'.format(states[index][0],states[index][1])
 
-state_abbreviations = []
-state_names = []
-
-for item in states:
-	state_abbreviations.append(item[0])
-	state_names.append(item[1])
-
-states_html = ''
-states_html += '<select>'
-
-for item in zip(state_abbreviations, state_names):
-	states_html += """<option value="{0}">{1}</option>""".format(item[0],item[1])
-
-states_html += '/<select>'
+states_html += '</select>'
 
 with open("states_1.html", "w") as states_1_file:
 	states_1_file.write(states_html)
-
-
 
 
 
