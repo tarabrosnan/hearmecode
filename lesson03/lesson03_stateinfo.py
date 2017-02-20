@@ -40,8 +40,10 @@ for index,state in enumerate(states):
 
 states_html += '</select>'
 
-with open("states_1.html", "w") as states_1_file:
+with open("lesson03_states_1.html", "w") as states_1_file:
 	states_1_file.write(states_html)
+
+
 
 
 
