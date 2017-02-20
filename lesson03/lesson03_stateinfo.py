@@ -1,3 +1,13 @@
+# Challenge Level: Beginner
+# Background: You have a text file with all of the US state names:
+#       states.txt: See section_07_(files).  
+#       You also have a spreadsheet in comma separated value (CSV) format, state_info.csv.  See also section_07_(files)
+#       state_info.csv has the following columns: Population Rank, State Name, Population, US House Members, Percent of US Population
+
+# Challenge 1: Open states.txt and use the information to generate an HTML drop-down menu as in: https://github.com/shannonturner/python-lessons/blob/master/playtime/lesson02_states.py
+# Challenge 2: Save the HTML as states.html instead of printing it to screen.  
+# Your states.html should look identical (or at least similar) to the one you created in the Lesson 2 playtime, except you're getting the states from a file instead of a list.
+
 # Challenge 3: Using state_info.csv, create an HTML page that has a table for *each* state with all of the state details.
 
 # Sample output:
@@ -16,24 +26,34 @@
 # </tr>
 # </table>
 
-with open("state_info.csv", "r") as state_info:
-	state_info = state_info.read().split("\n")
+# Challenge 4 (Not a Python challenge, but an HTML/Javascript challenge): When you make a choice from the drop-down menu, jump to that state's table.
 
-for index, row in enumerate(state_info):
-	state_info[index] = row.split(",")
 
-for state in state_info:
-	with open("lesson03_stateinfo.html", "a") as stateinfo_html:
-		stateinfo_html.write(""""<table border="1">
-				<tr>
-				<td colspan="2"> {0} </td>
-				</tr>
-				<tr>
-				<td> Population Rank: {1} </td>
-				<td> Percent: {2} </td>
-				</tr>
-				<tr>
-				<td> US House Members: {3} </td>
-				<td> Population: {4} </td>
-				</tr>
-				</table>""".format(state[1],state[0],state[4],state[3],state[2]))
+with open("states.txt", "r") as states_file:
+	states = states_file.read().split("\n")
+
+for index, state in enumerate(states):
+	states[index] = state.split("\t")
+
+state_abbreviations = []
+state_names = []
+
+for item in states:
+	state_abbreviations.append(item[0])
+	state_names.append(item[1])
+
+states_html = ''
+states_html += '<select>'
+
+for item in zip(state_abbreviations, state_names):
+	states_html += """<option value="{0}">{1}</option>""".format(item[0],item[1])
+
+states_html += '/<select>'
+
+with open("states_1.html", "w") as states_1_file:
+	states_1_file.write(states_html)
+
+
+
+
+
