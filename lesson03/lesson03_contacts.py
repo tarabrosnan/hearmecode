@@ -33,7 +33,4 @@ with open("contact_info.html", "w") as contact_info_file:
 		contact_info_file.write("""</tr>""")
 		contact_info_file.write("""</table>""")
 
-
-
-
 # Goal 4: Instead of reading in the contacts from the dictionary above, read them in from contacts.csv, which you can find in lesson_07_(files).
