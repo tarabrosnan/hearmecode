@@ -12,4 +12,18 @@
 
 # Goal 1: You want to get a de-duplicated list of all of the people who have come to your events.
 
-# Goal 2: Who came to *both* your Film Screening and your Happy hour?
+def deduplicate(file1, file2):
+
+	with open(file1, 'r') as file1:
+		file1_contents = file1.read().split('\n')
+
+	with open(file2, 'r') as file2:
+		file2_contents = file2.read().split('\n')
+
+	dedupe = list(set(file1_contents+file2_contents))
+
+	return dedupe
+
+print deduplicate("film_screening_attendees.txt", "happy_hour_attendees.txt")
+
+
